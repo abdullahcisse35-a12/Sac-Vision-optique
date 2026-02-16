@@ -144,4 +144,150 @@
 
         .service-card i {
             font-size: 3rem;
-            color: var(--pr
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-red);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .phone-btn {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+
+        .phone-btn:hover {
+            transform: scale(1.1);
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .order-btn { font-size: 1.1rem; padding: 15px 35px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SAC VISION<span> OPTIQUE</span></div>
+        <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">English</button>
+    </header>
+
+    <section class="hero">
+        <h1 data-key="hero-title">Pour un regard plus clair et net</h1>
+        <p data-key="hero-sub">Expertise visuelle et solutions optiques de haute qualité.</p>
+        
+        <div class="cta-buttons">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBBgneXdhDdNceAV9JsfwIjVKYv8cuSuYCwjMpFuCxPTmDdg/viewform" 
+               target="_blank" 
+               class="order-btn">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span data-key="order-btn">Commander Vos Lunettes</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="service-card">
+            <i class="fa-solid fa-glasses"></i>
+            <h3 data-key="s1-title">Photogrey & Antireflet</h3>
+            <p data-key="s1-desc">Lentilles photochromiques qui s'adaptent à la lumière pour un confort optimal.</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-file-medical"></i>
+            <h3 data-key="s2-title">Ordonnances</h3>
+            <p data-key="s2-desc">Exécution précise des ordonnances de vos ophtalmologues (Myopes ou Correctrices).</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-wrench"></i>
+            <h3 data-key="s3-title">Vente & Réparation</h3>
+            <p data-key="s3-desc">Vente de lunettes VP, VI ou Progressifs et service de réparation rapide.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2 data-key="contact-title">Prenez rendez-vous aujourd'hui</h2>
+        <a href="tel:+221785757406" class="phone-btn">+221 78 575 74 06</a>
+    </section>
+
+    <footer>
+        &copy; 2026 Sac Vision Optique - Dakar, Sénégal.
+    </footer>
+
+    <script>
+        const translations = {
+            'fr': {
+                'hero-title': 'Pour un regard plus clair et net',
+                'hero-sub': 'Expertise visuelle et solutions optiques de haute qualité.',
+                'order-btn': 'Commander Vos Lunettes',
+                's1-title': 'Photogrey & Antireflet',
+                's1-desc': "Lentilles photochromiques qui s'adaptent à la lumière pour un confort optimal.",
+                's2-title': 'Ordonnances',
+                's2-desc': 'Exécution précise des ordonnances de vos ophtalmologues (Myopes ou Correctrices).',
+                's3-title': 'Vente & Réparation',
+                's3-desc': 'Vente de lunettes VP, VI ou Progressifs et service de réparation rapide.',
+                'contact-title': 'Prenez rendez-vous aujourd\'hui',
+                'btn': 'English'
+            },
+            'en': {
+                'hero-title': 'For a Clearer and Sharper Vision',
+                'hero-sub': 'Visual expertise and high-quality optical solutions.',
+                'order-btn': 'Order Your Glasses Now',
+                's1-title': 'Photochromic & Anti-Reflective',
+                's1-desc': 'Lenses that adapt to light conditions for maximum comfort.',
+                's2-title': 'Prescriptions',
+                's2-desc': 'Precise fulfillment of prescriptions from your ophthalmologist (Myopia or Corrective).',
+                's3-title': 'Sales & Repairs',
+                's3-desc': 'Sale of Near, Intermediate, or Progressive lenses and fast repair services.',
+                'contact-title': 'Book your appointment today',
+                'btn': 'Français'
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'fr' ? 'en' : 'fr';
+            
+            // Update all elements with a data-key attribute
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                elem.innerText = translations[currentLang][key];
+            });
+
+            // Update button text
+            document.getElementById('langBtn').innerText = translations[currentLang]['btn'];
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLang;
+        }
+    </script>
+</body>
+</html>
