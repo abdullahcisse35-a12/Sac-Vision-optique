@@ -551,7 +551,7 @@ async function submitOrder() {
     if(rxImg) fd.append("Photo Ordonnance", rxImg);
     if(frameImg) fd.append("Photo Monture", frameImg);
     fd.append("_subject", `Nouvelle commande - ${name} - ${selectedFrame}`);
-    await fetch("https://formspree.io/f/mwpovkzj", {method:"POST",body:fd,headers:{Accept:"application/json"}});
+    await fetch("https://formspree.io/f/mdayqgok", {method:"POST",body:fd,headers:{Accept:"application/json"}});
   } catch(e) { console.warn("Email failed:", e); }
 
   const msg = lang==="fr"
